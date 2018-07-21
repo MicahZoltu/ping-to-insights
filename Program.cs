@@ -24,7 +24,10 @@ namespace Zoltu.PingToInsights
 			{
 				Console.WriteLine("Pinging host.");
 				var reply = await pinger.SendPingAsync(destinationIp);
-				var properties = new Dictionary<String, String>() { };
+				var properties = new Dictionary<String, String>()
+				{
+					["ip"] = destinationIp,
+				};
 				var metrics = new Dictionary<String, Double>()
 				{
 					["success"] = (reply.Status == IPStatus.Success) ? 1 : 0,
